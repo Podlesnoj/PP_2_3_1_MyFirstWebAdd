@@ -11,23 +11,36 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Name is required")
-    @Pattern(regexp = "^[A-Za-zА-Яа-яЁё\\s]+$", message = "Name can only contain letters and spaces")
-    @Column(nullable = false)
-    private String name;
+    @NotBlank(message = "First name is required")
+    @Pattern(regexp = "^[A-Za-zА-Яа-яЁё\\s]+$", message = "First name can only contain letters and spaces")
+    @Column(name = "first_name", nullable = false)
+    private String firstName;
+
+    @NotBlank(message = "Last name is required")
+    @Pattern(regexp = "^[A-Za-zА-Яа-яЁё\\s]+$", message = "Last name can only contain letters and spaces")
+    @Column(name = "last_name", nullable = false)
+    private String lastName;
 
     @Email(message = "Invalid email format")
     @Column
     private String email;
 
+    @Min(value = 1, message = "Age must be at least 1")
+    @Max(value = 120, message = "Age must be less than 120")
+    @Column
+    private Integer age;
+
     public User() {
     }
 
-    public User(String name, String email) {
-        this.name = name;
+    public User(String firstName, String lastName, String email, Integer age) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
+        this.age = age;
     }
 
+    // Геттеры и сеттеры
     public Long getId() {
         return id;
     }
@@ -36,12 +49,20 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -50,5 +71,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 }
