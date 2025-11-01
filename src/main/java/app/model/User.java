@@ -1,6 +1,9 @@
 package app.model;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> d453ca8c5d4082dc62e71f81323e44be392ae020
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
